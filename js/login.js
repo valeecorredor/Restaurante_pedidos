@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         try {
-            const response = await fetch('http://localhost:3005/login', {
+            const response = await fetch('http://localhost:3005/api/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -21,17 +21,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const data = await response.json();
 
-            if (response.ok) {
+            if (response.ok && data.success) {
                 // Asumimos que el backend retorna el rol del usuario en caso de éxito
-                // Ejemplo: data = { message: "Login exitoso", rol: "mesero", ... }
                 alert('Inicio de sesión exitoso');
                 
                 // Guardamos el usuario o estado en localStorage si es necesario
                 localStorage.setItem('currentUser', user);
-                localStorage.setItem('currentRole', data.rol || 'mesero');
+                localStorage.setItem('currentRole', data.user.rol || 'mesero');
 
                 // Redirección según rol (Ajustar si el backend envía el rol con otro nombre)
-                const rol = (data.rol || '').toLowerCase();
+                const rol = (data.user.rol || '').toLowerCase();
                 if (rol === 'cajero') {
                     window.location.href = 'cajero.html';
                 } else if (rol === 'chef') {

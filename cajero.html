@@ -254,17 +254,23 @@
 <script>
 // Tabbed Menu
 function openMenu(evt, menuName) {
+  // Si es un contenedor principal, solo ocultamos los principales
+  if (menuName === 'CrearPedido' || menuName === 'VerPedidos') {
+      var allContainers = document.querySelectorAll("#CrearPedido, #VerPedidos");
+      allContainers.forEach(function(el) {
+        el.style.display = "none";
+      });
+      var element = document.getElementById(menuName);
+      if (element) element.style.display = "block";
+      return;
+  }
+
+  // Si es una sub-pestaña (Pizza, Pasta, Starter), ocultamos los menus internos
   var i, x, tablinks;
   x = document.getElementsByClassName("menu");
   for (i = 0; i < x.length; i++) {
      x[i].style.display = "none";
   }
-  
-  // Para la nueva estructura, también ocultamos CrearPedido y VerPedidos
-  var allContainers = document.querySelectorAll("#CrearPedido, #VerPedidos");
-  allContainers.forEach(function(el) {
-    el.style.display = "none";
-  });
   
   tablinks = document.getElementsByClassName("tablink");
   for (i = 0; i < tablinks.length; i++) {
@@ -459,6 +465,6 @@ actualizarIngredientesPizza();
     }
 
 </script>
-<script src="js/cajero.js"></script>
+<script src="js/cajero.js?v=2"></script>
 </body>
 </html>

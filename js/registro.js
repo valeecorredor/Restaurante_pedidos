@@ -20,8 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            // Asumiendo que la ruta de registro es /register según convenciones
-            const response = await fetch('http://localhost:3005/register', {
+            const response = await fetch('http://localhost:3005/api/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
