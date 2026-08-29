@@ -52,3 +52,8 @@ La aplicación asume que el backend provee los siguientes endpoints REST:
 - **Cajero:** Encargado de tomar pedidos generales, modificar o eliminar órdenes.
 - **Chef:** Encargado de ver los pedidos pendientes y pasarlos a estado "Preparando" o "Listo".
 - **Mesero:** Encargado de ver los pedidos listos y marcarlos como "Entregados" al cliente.
+
+
+INTEGRANTES: JUANA VALENTINA CORREDOR
+ANDRES ESPINOSA 
+ANDRES PIÑA
